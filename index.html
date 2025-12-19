@@ -22,6 +22,7 @@
         padding: 10px 22px;
         font-size: 16px;
         cursor: pointer;
+        margin-right: 10px;
     }
     .box {
         background: #fff;
@@ -55,11 +56,13 @@
 <h1>📋 MIS Punch Copy-Paste Tool</h1>
 <p>Paste raw punch data exactly as downloaded from MIS:</p>
 
-<textarea id="input" placeholder="Please enter your date and time details
+<textarea id="input" placeholder="Please enter your data
 "></textarea>
 
 <br>
+
 <button onclick="calculate()">Calculate</button>
+<button onclick="clearAll()">Clear</button>
 
 <div id="output"></div>
 
@@ -91,7 +94,6 @@ function calculate() {
         const date = lines[1];
         const isToday = index === blocks.length - 1;
 
-        // Absent
         if (block.toLowerCase().includes("absent")) {
             results.push({ date, text: "Absent" });
             return;
@@ -103,7 +105,6 @@ function calculate() {
             lastPunchToday = new Date(matches[matches.length - 1].replace(" ", "T"));
         }
 
-        // Single punch → 0 hours, but working day
         if (matches && matches.length === 1) {
             workingDays++;
             results.push({ date, text: "Single Punch (0:00)" });
@@ -168,6 +169,11 @@ function calculate() {
 
     html += `</div>`;
     output.innerHTML = html;
+}
+
+function clearAll() {
+    document.getElementById("input").value = "";
+    document.getElementById("output").innerHTML = "";
 }
 
 // Helpers
