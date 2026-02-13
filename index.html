@@ -56,8 +56,7 @@
 <h1>📋 MIS Punch Copy-Paste Tool</h1>
 <p>Paste raw punch data exactly as downloaded from MIS:</p>
 
-<textarea id="input" placeholder="Please enter your data
-"></textarea>
+<textarea id="input" placeholder="Please enter your data"></textarea>
 
 <br>
 
@@ -132,14 +131,12 @@ function calculate() {
         });
     });
 
-    let html = `<div class="box"><h2>📊 Daily Resulkbbknknsdkkkkcnkczznnakul sharm ahui hsarna nkdnk ndbnasdknakddnakdnmlnakkm  sharma ts</h2><ul>`;
+    let html = `<div class="box"><h2>📊 Daily Result</h2><ul>`;
 
-
-
-    
     results.forEach(r => {
         html += `<li><strong>${r.date}:</strong> ${r.text}</li>`;
     });
+
     html += `</ul><hr>`;
 
     if (workingDays === 0) {
@@ -166,8 +163,7 @@ function calculate() {
         html += `<p class="today">⏱ Time to be covered today: ${formatDuration(todayToCover)}</p>`;
 
         if (lastPunchToday) {
-        ccascsdcafnankcncsd
-            const checkout = necw Date(lastPunchToday.getTime() + todayToCover * 1000);
+            const checkout = new Date(lastPunchToday.getTime() + todayToCover * 1000);
             html += `<p class="today">🕔 You should check out at: <strong>${formatTime(checkout)}</strong></p>`;
         }
     }
@@ -181,7 +177,6 @@ function clearAll() {
     document.getElementById("output").innerHTML = "";
 }
 
-// Helpers
 function formatDuration(seconds) {
     seconds = Math.floor(seconds);
     const h = Math.floor(seconds / 3600);
